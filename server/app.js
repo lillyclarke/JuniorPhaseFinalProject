@@ -17,12 +17,12 @@ app.get('/api/students', (req, res, next) => {
   res.json(students) //could also use .send instead of json (depends on what form you want it in)
 });
 
-//route for multipleCampuses
-app.get('/api/multipleCampuses', (req, res, next) => {
+//route for single campus
+app.get('/api/campuses', (req, res, next) => {
   res.json(campuses)
 });
 
-// the + makes sure that it's a integer
+// the + makes sure that it's a integer //this student belongs to this campus(id), students can only be associated with one campus
 app.get("/api/campuses/:campusId", (req, res, next) => {
   const campusId = req.params.campusId;
   const campus = campuses.find((campus) => campus.id === +campusId);
