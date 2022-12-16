@@ -3,6 +3,7 @@ import axios from 'axios';
 import { setCampuses } from '../store/slices/campusSlice'; //we can't just call it, we gotta dispatch it (line below)
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux'; //for selecting the state
+import { Link } from 'react-router-dom';
 
 //one student is associated with one campus //a route to serve up all campuses
 function Campuses() {
@@ -27,6 +28,7 @@ function Campuses() {
               <img src={campus.imageUrl} />
               <p>{campus.address}</p>
               <p>{campus.description}</p>
+              <Link to={`/campuses/${campus.id}`}>View Campus</Link>
             </div>
             )
           }
@@ -35,5 +37,6 @@ function Campuses() {
   )
 };
 //we are mapping over it, getting access to a single campus(is an object with name and id), then we display the image and such
+//the link component is taking you to campuses/whatever the id is
 
 export default Campuses;

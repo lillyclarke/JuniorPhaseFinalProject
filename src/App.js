@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Campuses from './pages/Campuses';
-import Students from './pages/Student';
-import Campus from './pages/Campus';
+import Campuses from './db/Campuses';
+import Students from './db/Students';
+import Campus from './db/Campus';
 
 
 //main component, the parent of all of the components
