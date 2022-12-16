@@ -9,6 +9,10 @@ import { Link } from 'react-router-dom';
 function Campuses() {
   const dispatch = useDispatch(); //connectd to line 4, it's to use the dispatch
   const campuses = useSelector(state => state.campus.campuses); //aka it gives you the campuses and it stores it in the campuses variable, useSelector gives you access to the state
+  const [name, setName] = React.useState('')
+  const [imageUrl, setImageUrl] = React.useState('')
+  const [address, setAddress] = React.useState('')
+  const [decription, setDescription] = React.useState('')
   const getCampuses = async () => {
     const { data } = await axios.get('/api/campuses');
     console.log(data);
@@ -18,9 +22,24 @@ function Campuses() {
         getCampuses()
     }, [])
 
+    const createCampus = async (e) => {
+      e.preventDefault()
+      const { data } = await axios.post('/api/campuses', {name, imageUrl, address, description})
+      console.log(data)
+      dispatch(setCampuses(data))
+    }
+
+    //below with values it is connecting it to the state, whatever is typed it'll be stored
     //show a form in order to add more campuses and students
   return ( //mapping it due to it being an array
     <div>
+      <form onSubmit={createCampus}>
+        <input type="text" placeholder="Campus Name" value={name} onChange={(e) => setName(e.target.value)} />
+        <input type="text" placeholder="Campus Image Url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
+        <input type="text" placeholder="Campus Address" value={address} onChange={(e) => setAddress(e.target.value)} />
+        <input type="text" placeholder="Campus Description" value={description} onChange={(e) => setDescription(e.target.value)} />
+        <button type="submit">Add Campus</button>
+      </form>
       {campuses.map(campus => {
           return (
             <div key={campus.id}>

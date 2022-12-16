@@ -12,6 +12,16 @@ app.use(express.static(path.join(__dirname, '..','public')))
 app.use(cors())
 app.use(volleyball)
 
+app.use(express.json())
+
+//post is for creating
+app.post('/api/campuses', (req, res, next) => {
+  const campus = req.body
+  campus.id = campuses.length + 1
+  campuses.push(campus)
+  res.json(campuses)
+});
+
 //route for the students
 app.get('/api/students', (req, res, next) => {
   res.json(students) //could also use .send instead of json (depends on what form you want it in)
