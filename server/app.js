@@ -17,16 +17,16 @@ app.get('/api/students', (req, res, next) => {
   res.json(students) //could also use .send instead of json (depends on what form you want it in)
 });
 
-//route for single campus
+//route for campus
 app.get('/api/campuses', (req, res, next) => {
   res.json(campuses)
 });
 
-// the + makes sure that it's a integer //this student belongs to this campus(id), students can only be associated with one campus
+//this student belongs to this campus(id), students can only be associated with one campus //so whatever id is in the url it'll be this
 app.get("/api/campuses/:campusId", (req, res, next) => {
   const campusId = req.params.campusId;
-  const campus = campuses.find((campus) => campus.id === +campusId);
-  campus.students = students.filter(
+  const campus = campuses.find((campus) => campus.id === +campusId); //+ sign converts the string to an integer
+  campus.students = students.filter( //adding a new property to it so it also shows the student info
     (student) => student.campusId === +campusId
   );
   res.json(campus);
