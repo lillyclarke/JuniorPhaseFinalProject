@@ -14,14 +14,6 @@ app.use(volleyball)
 
 app.use(express.json())
 
-//post is for creating
-app.post('/api/campuses', (req, res, next) => {
-  const campus = req.body
-  campus.id = campuses.length + 1
-  campuses.push(campus)
-  res.json(campuses)
-});
-
 //route for the students
 app.get('/api/students', (req, res, next) => {
   res.json(students) //could also use .send instead of json (depends on what form you want it in)
@@ -40,6 +32,23 @@ app.get("/api/campuses/:campusId", (req, res, next) => {
     (student) => student.campusId === +campusId
   );
   res.json(campus);
+});
+
+//post is for creating, used for creating a campus
+app.post('/api/campuses', (req, res, next) => {
+  const campus = req.body
+  campus.id = campuses.length + 1
+  campuses.push(campus)
+  res.json(campuses)
+});
+
+//deleting a campus
+app.delete('/api/campuses/:campusId', (req, res, next) => {
+  const campusId = req.params.campusId
+  const campus = campuses.find((campus) => campus.id === +campusId) //finding a campus with this id, this is what it'll delete
+  const index = campuses.indecOf(campus)
+  campuses.splice(index, 1) //1 means it'll remove one campus
+  res.json(campuses) //this'll return an array of campuses
 });
 
 app.use("*", (req, res) => {

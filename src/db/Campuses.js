@@ -22,11 +22,19 @@ function Campuses() {
         getCampuses()
     }, [])
 
+    //function linked in return to create a campus
     const createCampus = async (e) => {
       e.preventDefault()
       const { data } = await axios.post('/api/campuses', {name, imageUrl, address, description})
       console.log(data)
       dispatch(setCampuses(data))
+    }
+
+    //function for deleting a campus
+    const deleteCampus = async (id) => {
+      const { data } = await axios.delete(`/api/campuses/${id}`)
+      console.log(data)
+      dispatch(setCapuses(data))
     }
 
     //below with values it is connecting it to the state, whatever is typed it'll be stored
@@ -48,6 +56,7 @@ function Campuses() {
               <p>{campus.address}</p>
               <p>{campus.description}</p>
               <Link to={`/campuses/${campus.id}`}>View Campus</Link>
+              <button onClick={() => deleteCampus(campus.id)}>Delete Campus</button>
             </div>
             )
           }
