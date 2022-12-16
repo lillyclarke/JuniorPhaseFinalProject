@@ -10,7 +10,7 @@ function Campuses() {
   const campuses = useSelector(state => state.campus.campuses); //aka it gives you the campuses and it stores it in the campuses variable, useSelector gives you access to the state
   const getCampuses = async () => {
     const { data } = await axios.get('/api/campuses');
-    //console.log(data);
+    console.log(data);
     dispatch(setCampuses(data)); //this takes the action.payload from campusSlice.js and it stores it in the campuses
     }
     useEffect(() => { //hook to import it, sends a request to the backend to show it

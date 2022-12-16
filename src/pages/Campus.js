@@ -15,7 +15,7 @@ function Campus() {
     const { campusId } = useParams()
     const getCampus = async () => {
       const { data } = await axios.get(`/api/campuses/${campusId}`);
-      //console.log(data);
+      console.log(data);
       dispatch(setCampus(data)); //dispatch that action and use the data and it'll be stored in the state
     }
     useEffect(() => {

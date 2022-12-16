@@ -1,7 +1,9 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Campuses from './pages/campuses';
-import Students from './pages/students';
+import Campuses from './pages/Campuses';
+import Students from './pages/Student';
+import Campus from './pages/Campus';
+
 
 //main component, the parent of all of the components
 function App() {
@@ -11,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/campuses" element={<Campuses />} />
         <Route path="/students" element={<Students />} />
-        <Route path="/campuses/:campusId" element={ <Campus />} />
+        <Route path="/campuses/:campusId" element={<Campus />} />
       </Routes>
     </div>
   )
