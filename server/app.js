@@ -51,6 +51,14 @@ app.delete('/api/campuses/:campusId', (req, res, next) => {
   res.json(campuses) //this'll return an array of campuses
 });
 
+//add student
+app.post('api/students', (req, res, next) => {
+  const student = req.body
+  student.id = students.length + 1
+  students.push(student)
+  res.json(students)
+})
+
 app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });

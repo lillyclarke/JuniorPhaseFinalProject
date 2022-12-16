@@ -12,13 +12,16 @@ function Campuses() {
   const [name, setName] = React.useState('')
   const [imageUrl, setImageUrl] = React.useState('')
   const [address, setAddress] = React.useState('')
-  const [decription, setDescription] = React.useState('')
+  const [description, setDescription] = React.useState('')
+
   const getCampuses = async () => {
     const { data } = await axios.get('/api/campuses');
     console.log(data);
     dispatch(setCampuses(data)); //this takes the action.payload from campusSlice.js and it stores it in the campuses
     }
-    useEffect(() => { //hook to import it, sends a request to the backend to show it
+
+    //hook to import it, sends a request to the backend to show it
+    useEffect(() => {
         getCampuses()
     }, [])
 
