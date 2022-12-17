@@ -14,7 +14,7 @@ function Students() {
   const [firstName, setFirstName] = React.useState('')
   const [lastName, setLastName] = React.useState('')
   const [email, setEmail] = React.useState('')
-  cpnst [gpa, setGpa] = React.useState('')
+  const [gpa, setGpa] = React.useState('')
   const [campusId, setCampusId] = React.useState('')
 
   const getStudents = async () => {
@@ -30,7 +30,14 @@ function Students() {
   //function linked in return to add student button
   const createStudent = async (e) => {
     e.preventDefault()
-    const { data } = await axios.post('/api/students', {firstName, lastName, email, gpa, campusId})
+    const { data } = await axios.post('/api/students', {firstName, lastName, email, gpa, campusId: +campusId})
+    console.log(data)
+    dispatch(setStudents(data))
+  }
+
+  //delete button for student
+  const deleteStudent = async (id) => {
+    const { data } = await axios.delete(`/api/students/${id}`)
     console.log(data)
     dispatch(setStudents(data))
   }
@@ -52,6 +59,7 @@ function Students() {
             <p>{student.email}</p>
             <p>{student.gpa}</p>
             <Link to={`/students/${student.id}`}>View Student</Link>
+            <button onClick={() => deleteStudent(student.id)}>Delete Student</button>
           </div>
         )
       })}

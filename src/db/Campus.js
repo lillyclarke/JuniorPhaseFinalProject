@@ -11,13 +11,26 @@ import { useSelector } from 'react-redux';
 //campus is a single campus
 function Campus() {
     const dispatch = useDispatch();
+    const [name, setName] = useState('')
+    const [imageUrl, setImageUrl] = useState('')
+    const [address, setAddress] = useState('')
+    const [description, setDescription] = useState('')
     const campus = useSelector(state => state.campus.campus);
     const { campusId } = useParams()
+
+    const updateCampus = async (e) => {
+      e.preventDefualt()
+      const { data } = await axios.get(`/api/campuses/${campusId}`)
+      console.log(data)
+      dispatch(setCampus(data))
+    }
+
     const getCampus = async () => {
       const { data } = await axios.get(`/api/campuses/${campusId}`);
       console.log(data);
       dispatch(setCampus(data)); //dispatch that action and use the data and it'll be stored in the state
     }
+
     useEffect(() => {
       getCampus()
     }, [])
@@ -38,6 +51,13 @@ function Campus() {
             )
           }
         )}
+        <form onSubmit={updateCampus}>
+          <input type="text" placeholder="Campus Name" value={name} onChange={(e) => setName(e.target.value)} />
+          <input type="text" placeholder="Campus Image Url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
+          <input type="text" placeholder="Campus Address" value={address} onChange={(e) => setAddress(e.target.value)} />
+          <input type="text" placeholder="Campus Description" value={description} onChange={(e) => setDescription(e.target.value)} />
+        <button type="submit">Update the Campus</button>
+        </form>
     </div>
   )
 };
