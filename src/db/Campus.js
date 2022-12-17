@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 //campus is a single campus
 function Campus() {
     const dispatch = useDispatch();
-    const [name, setName] = useState('')
+    const [name, setName] = useState('') //changing the input will change the state and vise versa
     const [imageUrl, setImageUrl] = useState('')
     const [address, setAddress] = useState('')
     const [description, setDescription] = useState('')
@@ -29,6 +29,10 @@ function Campus() {
       const { data } = await axios.get(`/api/campuses/${campusId}`);
       console.log(data);
       dispatch(setCampus(data)); //dispatch that action and use the data and it'll be stored in the state
+      setName(data.name)
+      setImageUrl(data.imageUrl)
+      setAddress(data.address)
+      setDescription(data.description)
     }
 
     useEffect(() => {

@@ -28,6 +28,11 @@ function Student(){
     const { data } = await axios.get(`/api/students/${studentId}`)
     console.log(data)
     dispatch(setStudent(data)) //stores the student in the state
+    setFirstName(data.fristName)
+    setLastName(data.lastName)
+    setEmail(data.email)
+    setGpa(data.gpa)
+    setCampusId(data.campusId)
   }
 
   useEffect(() => {
@@ -40,13 +45,13 @@ function Student(){
       <p>{student.email}</p>
       <p>{student.gpa}</p>
       <p>{student.campus?.name}</p>
-      <form onSubmit={createStudent}>
+      <form onSubmit={updateStudent}>
         <input type="text" placeholder="Students First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
         <input type="text" placeholder="Students Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
         <input type="text" placeholder="Students Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input type="text" placeholder="Students GPA" value={gpa} onChange={(e) => setGpa(e.target.value)} />
         <input type="text" placeholder="Student Campus" value={campusId} onChange={(e) => setCampusId(e.target.value)} />
-        <button type="submit">Add Student</button>
+        <button type="submit">Update Students</button>
       </form>
     </div>
   )

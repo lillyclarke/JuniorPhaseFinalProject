@@ -27,7 +27,7 @@ app.get('/api/campuses', (req, res, next) => {
 //this student belongs to this campus(id), students can only be associated with one campus //so whatever id is in the url it'll be this
 app.get('/api/campuses/:campusId', (req, res, next) => {
   const campusId = req.params.campusId;
-  const campus = campuses.find((campus) => campus.id === +campusId); //+ sign converts the string to an integer
+  let campus = campuses.find((campus) => campus.id === +campusId); //+ sign converts the string to an integer //had to change to let due to the copy of the array(line below)
   campus = {...campus} //creates a copy of the campus to not alter previous array
   campus.students = students.filter( //adding a new property to it so it also shows the student info
     (student) => student.campusId === +campusId
@@ -37,7 +37,7 @@ app.get('/api/campuses/:campusId', (req, res, next) => {
 
 app.get('/api/students/:studentId', (req, res, next) => {
   const studentId = req.params.studentId
-  const student = students.find((student) => student.id === +studentId)
+  let student = students.find((student) => student.id === +studentId)
   student = {...student}
   student.campus = campuses.find((campus) => campus.id === student.campusId)
   res.json(student);
@@ -58,6 +58,26 @@ app.post('api/students', (req, res, next) => {
   student.id = students.length + 1
   students.push(student)
   res.json(students);
+});
+
+//updating students
+app.put('/api/students/:studentId', (req, res, next) => {
+  const studentId = req.params.studentId
+  let student = students.find((student) => student.id === +studentId) //find a student
+  student = {...student, ...req.body} //set a student
+  student.campus = campuses.find((campus) => campus.id === student.campusId)
+  res.json(students);
+});
+
+//updating campus
+app.put('/api/campuses/:campusId', (req, res, next) => {
+  const campusId = req.params.campusId
+  let campus = campuses.find((campus) => campus.id === +campusId)
+  campus = {...campus, ...req.body}
+  campus.students = students.filter( //adding a new property to it so it also shows the student info
+    (student) => student.campusId === +campusId
+  );
+  res.json(campuses);
 });
 
 //deleting a campus

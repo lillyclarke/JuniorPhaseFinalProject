@@ -4,6 +4,7 @@ import Campuses from './db/Campuses';
 import Students from './db/Students';
 import Campus from './db/Campus';
 import Student from './db/Student';
+import { Link } from 'react-router-dom';
 
 
 //main component, the parent of all of the components
