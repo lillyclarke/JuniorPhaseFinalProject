@@ -2,7 +2,7 @@
 
 | Score | Meaning                     |
 | ----- | --------------------------- |
-| 0     | Critera not met             |
+| 0     | Criteria not met             |
 | 1     | Criteria met inconsistently |
 | 2     | Criteria met consistently   |
 
