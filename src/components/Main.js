@@ -34,8 +34,7 @@ function App() {
 
 const Main = () => {
     return (
-        <div>
-        </div>
+        <div></div>
     )
 };
 

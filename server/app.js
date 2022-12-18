@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const id = require('volleyball/lib/id');
 const cors = require('cors');
 const volleyball = require('volleyball');
 const { library } = require('webpack');
@@ -50,6 +51,32 @@ app.get('/api/students/:studentId', async (req, res, next) => {
   }
 });
 
+app.get('/api/campuses/numberOfStudents', async (req, res, next) => {
+  try{
+  let campusesCopy = campuses.map((campus) => {
+    campus = {...campus}
+     campus.students= students.filter((student) => student.campusId === campus.id)
+   return campus
+  })
+  campusesCopy.sort((a, b) => b.students.length - a.students.length)
+  res.json(campusesCopy);
+  }catch(err){
+    next(err);
+  }
+});
+
+app.get('/api/campuses/empty', async (req, res, next) => {
+  try{
+  let emptyCampuses = campuses.filter((campus) => {
+    let campusStudents = students.filter((student) => student.campusId === campus.id)
+    return campusStudents.length === 0
+  })
+  res.json(emptyCampuses);
+}catch(err){
+  next(err);
+}
+});
+
   //post ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //post is for creating, used for creating a campus
 app.post('/api/campuses', async (req, res, next) => {
@@ -81,9 +108,14 @@ app.put('/api/students/:studentId', async (req, res, next) => {
   try{
   const studentId = req.params.studentId
   let student = students.find((student) => student.id === +studentId) //find a student
-  student = {...student, ...req.body} //set a student
-  student.campus = campuses.find((campus) => campus.id === student.campusId)
-  res.json(students);
+  student.firstName=req.body.firstName
+  student.lastName=req.body.lastName
+  student.email=req.body.email
+  student.gpa=req.body.gpa
+  student.campusId=req.body.campusId
+  let studentCopy = {...student} //set a student
+  studentCopy.campus = campuses.find((campus) => campus.id === student.campusId)
+  res.json(studentCopy);
   }catch(err){
     next(err);
   }
@@ -94,12 +126,19 @@ app.put('/api/campuses/:campusId', async (req, res, next) => {
   try{
   const campusId = req.params.campusId
   let campus = campuses.find((campus) => campus.id === +campusId)
-  campus = {...campus, ...req.body}
-  campus.students = students.filter((student) => student.campusId === +campusId)
-  res.json(campuses);
+  campus.name=req.body.name
+  campus.imageUrl=req.body.imageUrl
+  campus.address=req.body.address
+  campus.description=req.body.description
+  let campusCopy = {...campus}
+  campusCopy.students = students.filter(
+    (student) => student.campusId === +campusId
+  );
+  res.json(campusCopy);
   }catch(err){
     next(err);
-}});
+  }
+});
 
   //delete -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //deleting a campus
@@ -107,7 +146,7 @@ app.delete('/api/campuses/:campusId', async (req, res, next) => {
   try{
   const campusId = req.params.campusId
   const campus = campuses.find((campus) => campus.id === +campusId) //finding a campus with this id, this is what it'll delete
-  const index = campuses.indecOf(campus)
+  const index = campuses.indexOf(campus)
   campuses.splice(index, 1) //1 means it'll remove one campus
   res.json(campuses); //this'll return an array of campuses
   }catch(err){
@@ -123,6 +162,24 @@ app.delete('/api/students/:studentId', async (req, res, next) => {
   const index = students.indexOf(student)
   students.splice(index, 1)
   res.json(students);
+  }catch(err){
+    next(err);
+  }
+});
+
+//combining the two delete routes
+app.delete('/api/campuses/:campusId/students/:studentId', async (req, res, next) => {
+  try{
+  const studentId = req.params.studentId
+  const student = students.find((student) => student.id === +studentId)
+  student.campusId = null
+  const campusId = req.params.campusId
+  let campus = campuses.find((campus) => campus.id === +campusId)
+  campus={...campus} //creates copy of campus
+  campus.students = students.filter( //filters students by campus id
+    (student) => student.campusId === +campusId //returns students with campus id
+  );
+  res.json(campus);
   }catch(err){
     next(err);
   }

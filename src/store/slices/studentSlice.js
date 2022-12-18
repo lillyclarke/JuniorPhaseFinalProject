@@ -16,6 +16,6 @@ export const studentSlice = createSlice({
   }
 });
 
-export const { setStudents, setStudent } = studentSlice.actions
+export const { setStudents, setStudent } = studentSlice.actions;
 
-export default studentSlice.reducer
+export default studentSlice.reducer;

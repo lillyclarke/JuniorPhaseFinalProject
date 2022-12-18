@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 export const campusSlice = createSlice({
   name: 'campus',
   initialState: { //this state has campuses
-    campuses: [], //multiple campuses
-    campus: {} //second campus
+    campuses: [],
+    campus: {}
   },
   reducers: {
     setCampuses: (state, action) => {

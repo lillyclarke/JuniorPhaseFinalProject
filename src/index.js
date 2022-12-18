@@ -6,15 +6,14 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 
-//Import and destructure main from src/component/index.js and anything else you may need here
-//provider is providing the store to the application
+//Import and destructure main from src/component/index.js and anything else you may need here //provider is providing the store to the application
 
-const container = document.getElementById("root")
-const root = createRoot(container)
+const container = document.getElementById("root");
+const root = createRoot(container);
 
 //need to render app(main component) and wrap in router
 root.render(
-       // <Main />,
+       //<Main />,
        <Router>
               <Provider store={store}>
         <App />
