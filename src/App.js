@@ -6,21 +6,21 @@ import Students from './db/Students';
 import Campus from './db/Campus';
 import Student from './db/Student';
 import { Link } from 'react-router-dom'; //can combine with route and routes
-import notFound from './db/notFound';
+import notFound from './db/ErrorPage';
 
 
-//main component, the parent of all of the components //this is making it so that if you go to the /Campuses you'll get campuses and students with the path /students
+//main component, parent of all the components //declaring routes linking it with components
 function App() {
   return (
     <div>
       <Link to="/campuses">Campuses</Link>
       <Link to="/students">Students</Link>
       <Routes>
-        <Route path="/campuses" element={<Campuses />} />
         <Route path="/students" element={<Students />} />
+        <Route path="/campuses" element={<Campuses />} />
         <Route path="/campuses/:campusId" element={<Campus />} />
         <Route path="/students/:studentId" element={<Student />} />
-        <Route path="*" element={<notFound />} />
+        <Route path="*" element={<errorPage />} />
       </Routes>
     </div>
   )
