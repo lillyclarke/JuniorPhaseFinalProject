@@ -67,3 +67,5 @@ const seed = async () => {
     next(err);
   }
 };
+
+export default seed;

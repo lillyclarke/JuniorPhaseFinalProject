@@ -10,7 +10,7 @@
   background-color: blueviolet;
 }
 
-
+/* originally added in Campuses.js */
 .Campuses{
   display: flex;
   flex-direction: column;
@@ -19,6 +19,7 @@
   background-color: blueviolet;
 }
 
+/* originally added in Students.js */
 .Students{
   display: flex;
   flex-direction: column;

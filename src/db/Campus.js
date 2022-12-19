@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { createNextState } from '@reduxjs/toolkit';
 
 //association between campus table //campus table needs four attributes with it(name, imageUrl, address, description)
 function Campus() {
@@ -42,8 +43,12 @@ function Campus() {
 
     //this is a function that gets all campuses with no students
     const unRegisterAStudent = async (studentId) => {
+      try{
       const { data } = await axios.delete(`/api/campuses/${campus.id}/students/${studentId}`);
       dispatch(setCampus(data));
+      }catch(err){
+        next(err);
+      }
     };
 
   return (

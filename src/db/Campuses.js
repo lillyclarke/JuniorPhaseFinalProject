@@ -4,6 +4,7 @@ import { setCampuses } from '../store/slices/campusSlice'; //we can't just call 
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux'; //for selecting the state
 import { Link } from 'react-router-dom';
+import { createNextState } from '@reduxjs/toolkit';
 // import css from './styles.css';
 
 function Campuses() {
@@ -29,9 +30,13 @@ function Campuses() {
 
   //this is a function that gets all campuses with no students
   const obtainCampusesNoStudents = async () => {
+    try{
     const { data } = await axios.get('/api/campuses/empty')
-    dispatch(setCampuses(data)
-    )};
+    dispatch(setCampuses(data))
+    }catch(err){
+      next(err);
+    }
+    };
 
   //hook to import it, sends a request to the backend to show it
   useEffect(() => {
@@ -84,13 +89,13 @@ function Campuses() {
       </select>
       {campuses.map(campus => {
           return (
-            <div className={Campuses} key={campus.id}>
+            <div key={campus.id}>
               <h1>{campus.name}</h1>
               <img src={campus.imageUrl} />
               <p>{campus.address}</p>
               <p>{campus.description}</p>
               <Link to={`/campuses/${campus.id}`}>View This Campus</Link>
-              <button onClick={() => deleteACampus(campus.id)}>Delete This Campus</button>
+              <button onClick={() => deleteACampus(campus.id)}>X</button>
             </div>
             )
           }

@@ -15,6 +15,7 @@ function Student(){
   const [lastName, setLastName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [gpa, setGpa] = React.useState('');
+  const [imageUrl, setImageUrl] = React.useState('')
   const [campusId, setCampusId] = React.useState('');
 
   //sends a request to the backend to update the student
@@ -46,6 +47,7 @@ function Student(){
       <h1>{student.firstName} {student.lastName}</h1>
       <p>{student.email}</p>
       <p>{student.gpa}</p>
+      <p>{student.imageUrl}</p>
       <p>{student.campus?.name}</p>
       <Link to={`/campuses/${student.campusId}`}>{student.campus?.name}</Link>
       <form onSubmit={improveStudent}>

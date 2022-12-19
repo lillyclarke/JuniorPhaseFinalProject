@@ -14,6 +14,7 @@ function Students() {
   const [lastName, setLastName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [gpa, setGpa] = React.useState('');
+  const [imageUrl, setImageUrl] = React.useState('')
   const [campusId, setCampusId] = React.useState('');
 
   //function to get all students
@@ -93,12 +94,12 @@ function Students() {
       </select>
       {students.map(student => {
         return (
-          <div className={Students} key={student.id}>
+          <div key={student.id}>
             <h1>{student.firstName} {student.lastName}</h1>
             <p>{student.email}</p>
             <p>{student.gpa}</p>
             <Link to={`/students/${student.id}`}>View This Student</Link>
-            <button onClick={() => deleteStudent(student.id)}>Delete This Student</button>
+            <button onClick={() => deleteStudent(student.id)}>X</button>
           </div>
         )
       })}

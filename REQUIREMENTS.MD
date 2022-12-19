@@ -8,9 +8,9 @@
 
   <details>
 
-- [ ] Write a component to display a list of all campuses (at least their names and images)
-- [ ] Write a campuses sub-reducer to manage campuses in your Redux store
-- [ ] Display the all-campuses component when the url matches `/campuses`
+- [x] Write a component to display a list of all campuses (at least their names and images)
+- [x] Write a campuses sub-reducer to manage campuses in your Redux store
+- [x] Display the all-campuses component when the url matches `/campuses`
 
   </details>
 
@@ -18,9 +18,9 @@
 
   <details>
 
-- [ ] Write a component to display a list of all students (at least their names)
-- [ ] Write a students sub-reducer to manage students in your Redux store
-- [ ] Display the all-students component when the url matches `/students`
+- [x] Write a component to display a list of all students (at least their names)
+- [x] Write a students sub-reducer to manage students in your Redux store
+- [x] Display the all-students component when the url matches `/students`
 
   </details>
 
@@ -28,7 +28,7 @@
 
   <details>
 
-- [ ] Add a links to the navbar that can be used to navigate to the all-campuses view and the all-students view
+- [x] Add a links to the navbar that can be used to navigate to the all-campuses view and the all-students view
 
   </details>
 
@@ -38,7 +38,7 @@
 
   <details>
 
-- [ ] Write a function which sync's and seeds your database when your application starts
+- [x] Write a function which sync's and seeds your database when your application starts
 
   </details>
 
@@ -46,13 +46,13 @@
 
   <details>
 
-  - [ ] Write a route to serve up all campuses
+  - [x] Write a route to serve up all campuses
 
 - Write a `campuses` model with the following information:
-  - [ ] name - not empty or null
-  - [ ] imageUrl - with a default value
-  - [ ] address - not empty or null
-  - [ ] description - extremely large text
+  - [x] name - not empty or null
+  - [x] imageUrl - with a default value
+  - [x] address - not empty or null
+  - [x] description - extremely large text
 
   </details>
 
@@ -60,17 +60,17 @@
 
   <details>
 
-  - [ ] Write a route to serve up all students
+  - [x] Write a route to serve up all students
 
 - Write a `students` model with the following information:
 
-  - [ ] firstName - not empty or null
-  - [ ] lastName - not empty or null
-  - [ ] email - not empty or null; must be a valid email
-  - [ ] imageUrl - with a default value
-  - [ ] gpa - decimal between 0.0 and 4.0
+  - [x] firstName - not empty or null
+  - [x] lastName - not empty or null
+  - [x] email - not empty or null; must be a valid email
+  - [x] imageUrl - with a default value
+  - [x] gpa - decimal between 0.0 and 4.0
 
-- [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
+- [x] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
 
   </details>
 
@@ -89,12 +89,12 @@
   <details>
 
   - Write a component to display a single campus with the following information:
-    - [ ] The campus's name, image, address and description
-    - [ ] A list of the names of all students in that campus (or a helpful message if it doesn't have any students)
-  - [ ] Display the appropriate campus's info when the url matches `/campuses/:campusId`
-  - [ ] Clicking on a campus from the campuses view should navigate to show that campus
+    - [x] The campus's name, image, address and description
+    - [x] A list of the names of all students in that campus (or a helpful message if it doesn't have any students)
+  - [x] Display the appropriate campus's info when the url matches `/campuses/:campusId`
+  - [x] Clicking on a campus from the campuses view should navigate to show that campus
 
-- [ ] Clicking on the name of a student in the campus view should navigate to show that student in the student view
+- [x] Clicking on the name of a student in the campus view should navigate to show that student in the student view
 
   </details>
 
@@ -103,12 +103,12 @@
 <details>
 
   - Write a component to display a single student with the following information:
-    - [ ] The student's full name, email, image, and gpa
-    - [ ] The name of their campus (or a helpful message if they don't have one)
-  - [ ] Display the appropriate student when the url matches `/students/:studentId`
-  - [ ] Clicking on a student from the students view should navigate to show that student
+    - [x] The student's full name, email, image, and gpa
+    - [] The name of their campus (or a helpful message if they don't have one)
+  - [x] Display the appropriate student when the url matches `/students/:studentId`
+  - [x] Clicking on a student from the students view should navigate to show that student
 
-- [ ] Clicking on the name of a campus in the student view should navigate to show that campus in the campus view
+- [x] Clicking on the name of a campus in the student view should navigate to show that campus in the campus view
 
 </details>
 
@@ -122,7 +122,7 @@
 
 <details>
 
-   - [ ] Write a route to serve up a single student (based on their id), _including that student's campus_
+   - [x] Write a route to serve up a single student (based on their id), _including that student's campus_
 
 </details>
 
@@ -130,7 +130,7 @@
 
 <details>
 
-   - [ ] Write a route to serve up a single campus (based on its id), _including that campuses' students_
+   - [x] Write a route to serve up a single campus (based on its id), _including that campuses' students_
 
 </details>
 
@@ -152,12 +152,12 @@
 
   <details>
 
-- [ ] Write a component to display a form for adding a new campus that contains inputs for _at least_ the name and address.
-- [ ] Display this component as part of the campuses view, alongside the list of campuses
+- [x] Write a component to display a form for adding a new campus that contains inputs for _at least_ the name and address.
+- [x] Display this component as part of the campuses view, alongside the list of campuses
 
 - Submitting the form with a valid name/address should:
-  - [ ] Make an AJAX request that causes the new campus to be persisted in the database
-  - [ ] Add the new campus to the list of campuses without needing to refresh the page
+  - [x] Make an AJAX request that causes the new campus to be persisted in the database
+  - [x] Add the new campus to the list of campuses without needing to refresh the page
 
   </details>
 
@@ -165,12 +165,12 @@
 
   <details>
 
- - [ ] Write a component to display a form for adding a new student that contains inputs for _at least_ first name, last name and email
- - [ ] Display this component as part of the students view, alongside the list of students
+ - [x] Write a component to display a form for adding a new student that contains inputs for _at least_ first name, last name and email
+ - [x] Display this component as part of the students view, alongside the list of students
 
  - Submitting the form with a valid first name/last name/email should:
-   - [ ] Make an AJAX request that causes the new student to be persisted in the database
-   - [ ] Add the new student to the list of students without needing to refresh the page
+   - [x] Make an AJAX request that causes the new student to be persisted in the database
+   - [x] Add the new student to the list of students without needing to refresh the page
 
   </details>
 
@@ -184,7 +184,7 @@
 
   <details>
 
-  - [ ] Write a route to add a new campus
+  - [x] Write a route to add a new campus
 
   </details>
 
@@ -192,7 +192,7 @@
 
   <details>
 
-  - [ ] Write a route to add a new student
+  - [x] Write a route to add a new student
 
   </details>
 
@@ -213,11 +213,11 @@
 
   <details>
 
-  - [ ] In the campuses view, include an `X` button next to each campus
+  - [x] In the campuses view, include an `X` button next to each campus
   - Clicking the `X` button should:
 
-    - [ ] Make an AJAX request that causes that campus to be removed from database
-    - [ ] Remove the campus from the list of campuses without needing to refresh the page
+    - [x] Make an AJAX request that causes that campus to be removed from database
+    - [x] Remove the campus from the list of campuses without needing to refresh the page
 
   </details>
 
@@ -225,11 +225,11 @@
 
   <details>
 
-  - [ ] In the students view, include an `X` button next to each student
+  - [x] In the students view, include an `X` button next to each student
   - Clicking the `X` button should:
 
-    - [ ] Make an AJAX request that causes that student to be removed from database
-    - [ ] Remove the student from the list of students without needing to refresh the page
+    - [x] Make an AJAX request that causes that student to be removed from database
+    - [x] Remove the student from the list of students without needing to refresh the page
 
 
   </details>
@@ -245,7 +245,7 @@
 
   <details>
 
-  - [ ] Write a route to remove a campus (based on its id)
+  - [x] Write a route to remove a campus (based on its id)
 
   </details>
 
@@ -253,7 +253,7 @@
 
   <details>
 
-  - [ ] Write a route to remove a student (based on their id)
+  - [x] Write a route to remove a student (based on their id)
 
   </details>
 
@@ -273,12 +273,12 @@
 
   <details>
 
-  - [ ] Write a component to display a form updating _at least_ a campus's name and address
-  - [ ] Display this component as part of the campus view
+  - [x] Write a component to display a form updating _at least_ a campus's name and address
+  - [x] Display this component as part of the campus view
     - Submitting the form with valid data should:
-  - [ ] Make an AJAX request that causes that campus to be updated in the database
-  - [ ] Update the campus in the current view without needing to refresh the page
-    - [ ] In the campus view, display an `Unregister` button next to each of its students, which removes the student from the campus (in the database as           well as this view); hint: the student is still in the database but is no longer associated with the campus
+  - [x] Make an AJAX request that causes that campus to be updated in the database
+  - [x] Update the campus in the current view without needing to refresh the page
+    - [x] In the campus view, display an `Unregister` button next to each of its students, which removes the student from the campus (in the database as           well as this view); hint: the student is still in the database but is no longer associated with the campus
 
   </details>
 
@@ -286,11 +286,11 @@
 
   <details>
 
-  - [ ] Write a component to display a form updating a student
-  - [ ] Display this component as part of the student view
+  - [x] Write a component to display a form updating a student
+  - [x] Display this component as part of the student view
    - Submitting the form with valid data should:
-  - [ ] Make an AJAX request that causes that student to be updated in the database
-  - [ ] Update the student in the current view without needing to refresh the page
+  - [x] Make an AJAX request that causes that student to be updated in the database
+  - [x] Update the student in the current view without needing to refresh the page
 
   </details>
 
@@ -304,7 +304,7 @@
 
 <details>
 
-- [ ] Write a route to update an existing campus
+- [x] Write a route to update an existing campus
 
 </details>
 
@@ -312,7 +312,7 @@
 
 <details>
 
-- [ ] Write a route to update an existing student
+- [x] Write a route to update an existing student
 
 </details>
 
@@ -340,9 +340,9 @@
 
 <details>
 
-- [ ] Create option for students to be ordered based on lastName on all-students view
-- [ ] Create option for students to be ordered based on GPA on all-students view
-- [ ] Create option for campuses to be ordered based on number of enrolled students on all-campuses view
+- [x] Create option for students to be ordered based on lastName on all-students view
+- [x] Create option for students to be ordered based on GPA on all-students view
+- [x] Create option for campuses to be ordered based on number of enrolled students on all-campuses view
 
 </details>
 
@@ -350,8 +350,8 @@
 
 <details>
 
-- [ ] Create a filter on all-students view to only show students who are not registered to a campus
-- [ ] Create a filter on the all-campuses view to only show campuses that do not have any registered students
+- [x] Create a filter on all-students view to only show students who are not registered to a campus
+- [x] Create a filter on the all-campuses view to only show campuses that do not have any registered students
 
 </details>
 

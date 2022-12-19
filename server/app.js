@@ -150,7 +150,7 @@ app.put('/api/campuses/:campusId', async (req, res, next) => {
 });
 
   //delete -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//deleting a campus
+  //deleting a campus
 app.delete('/api/campuses/:campusId', async (req, res, next) => {
   try{
     const campusId = req.params.campusId
@@ -204,38 +204,44 @@ const students = [
   , lastName: 'Smith'
   , email: 'JoeSmith@gmail.com'
   , gpa: 2.0
+  , imageUrl: 'https://rb.gy/gcltjo'
   , campusId: 1},
   {id: 2,
     firstName: 'Jane'
   , lastName: 'Cook'
   , email: 'cookjand@gmail.com'
+  , imageUrl: 'https://rb.gy/gcltjo'
   , gpa: 3.5
   , campusId: 1},
   {id: 3,
     firstName: 'Jake'
   , lastName: 'Smith'
   , email: 'jakesmith@yahoo.com'
+  , imageUrl: 'https://rb.gy/gcltjo'
   , gpa: 3.78
   , campusId: 1},
   {id: 4,
     firstName: 'Jill'
   , lastName: 'Lopez'
   , email: 'JillLopez@yahoo.com'
+  , imageUrl: 'https://rb.gy/gcltjo'
   , gpa: 4.0
   , campusId: 1},
   {id: 5,
     firstName: 'Jake'
   , lastName: 'Truck'
-  , email: 'JakeTruck@gmail '
+  , email: 'JakeTruck@gmail'
+  , imageUrl: 'https://rb.gy/gcltjo'
   , gpa: 3.6
   , campusId: 1},
   {id: 6,
     firstName: 'Josh'
   , lastName: 'Murray'
   , email: 'joshMurray@yahoo.com'
+  , imageUrl: 'https://rb.gy/gcltjo'
   , gpa: 1.5
   , campusId: 1}
-]
+];
 
 const campuses = [
   {id: 1, name: 'Math College'
