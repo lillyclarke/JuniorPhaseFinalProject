@@ -93,7 +93,7 @@ function Students() {
       </select>
       {students.map(student => {
         return (
-          <div key={student.id}>
+          <div className={Students} key={student.id}>
             <h1>{student.firstName} {student.lastName}</h1>
             <p>{student.email}</p>
             <p>{student.gpa}</p>

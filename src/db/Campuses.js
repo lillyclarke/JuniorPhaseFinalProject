@@ -4,6 +4,7 @@ import { setCampuses } from '../store/slices/campusSlice'; //we can't just call 
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux'; //for selecting the state
 import { Link } from 'react-router-dom';
+// import css from './styles.css';
 
 function Campuses() {
   const dispatch = useDispatch();
@@ -83,7 +84,7 @@ function Campuses() {
       </select>
       {campuses.map(campus => {
           return (
-            <div key={campus.id}>
+            <div className={Campuses} key={campus.id}>
               <h1>{campus.name}</h1>
               <img src={campus.imageUrl} />
               <p>{campus.address}</p>

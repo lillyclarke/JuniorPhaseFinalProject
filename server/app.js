@@ -6,74 +6,7 @@ const volleyball = require('volleyball');
 const { library } = require('webpack');
 const { json } = require('sequelize');
 const app = express();
-
-//dummy data for students and campuses
-const students = [
-  {id: 1, firstName: 'joe'
-  , lastName: 'smith'
-  , email: 'JoeSmith@gmail.com'
-  , gpa: 3.5
-  , imageUrl: 'https://binged.it/3FSrqTO'
-  , campusId: 1},
-  {id: 2, firstName: 'jane'
-  , lastName: 'cook'
-  , email: 'cookjand@gmail.com'
-  , gpa: 3.5
-  , imageUrl: 'https://binged.it/3FSrqTO'
-  , campusId: 1},
-  {id: 3, firstName: 'jake'
-  , lastName: 'smith'
-  , email: 'jakesmith@yahoo.com'
-  , gpa: 3.5
-  , imageUrl: 'https://binged.it/3FSrqTO'
-  , campusId: 1},
-  {id: 4, firstName: 'jill'
-  , lastName: 'lopez'
-  , email: 'JillLopez@yahoo.com'
-  , gpa: 3.5
-  , imageUrl: 'https://binged.it/3FSrqTO'
-  , campusId: 1},
-  {id: 5, firstName: 'jake'
-  , lastName: 'truck'
-  , email: 'JakeTruck@gmail '
-  , gpa: 3.5
-  , imageUrl: 'https://binged.it/3FSrqTO'
-  , campusId: 1},
-  {id: 6, firstName: 'josh'
-  , lastName: 'murray'
-  , email: 'joshMurray@yahoo.com'
-  , gpa: 3.5
-  , imageUrl: 'https://binged.it/3FSrqTO'
-  , campusId: 1}
-]
-
-const campuses = [
-  {id: 1, name: 'mathcollege'
-, imageUrl: 'https://binged.it/3FSrqTO'
-, address: '123 cool st'
-, description: 'mathcollege'},
-  {id: 2, name: 'historycollege'
-, imageUrl: 'https://binged.it/3FSrqTO'
-, address: '123 cool st'
-, description: 'historycollege'},
-  {id: 3, name: 'englishcollege'
-, imageUrl: 'https://binged.it/3FSrqTO'
-, address: '123 cool st'
-, description: 'englishcollege'},
-  {id: 4, name: 'sciencecollege'
-, imageUrl: 'https://binged.it/3FSrqTO'
-, address: '123 cool st'
-, description: 'sciencecollege'},
-  {id: 5, name: 'artcollege'
-, imageUrl: 'https://binged.it/3FSrqTO'
-, address: '123 cool st'
-, description: 'artcollege'},
-  {id: 6, name: 'musiccollege'
-, imageUrl: 'https://binged.it/3FSrqTO'
-, address: '123 cool st'
-, description: 'musiccollege'}
-];
-
+//const seed = require('../bin/seed');
 
 //static middleware
 app.use(express.static(path.join(__dirname, '..','public')))
@@ -262,5 +195,73 @@ app.delete('/api/campuses/:campusId/students/:studentId', async (req, res, next)
 app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
+
+
+//data for students and campuses
+const students = [
+  {id: 1,
+    firstName: 'Joe'
+  , lastName: 'Smith'
+  , email: 'JoeSmith@gmail.com'
+  , gpa: 2.0
+  , campusId: 1},
+  {id: 2,
+    firstName: 'Jane'
+  , lastName: 'Cook'
+  , email: 'cookjand@gmail.com'
+  , gpa: 3.5
+  , campusId: 1},
+  {id: 3,
+    firstName: 'Jake'
+  , lastName: 'Smith'
+  , email: 'jakesmith@yahoo.com'
+  , gpa: 3.78
+  , campusId: 1},
+  {id: 4,
+    firstName: 'Jill'
+  , lastName: 'Lopez'
+  , email: 'JillLopez@yahoo.com'
+  , gpa: 4.0
+  , campusId: 1},
+  {id: 5,
+    firstName: 'Jake'
+  , lastName: 'Truck'
+  , email: 'JakeTruck@gmail '
+  , gpa: 3.6
+  , campusId: 1},
+  {id: 6,
+    firstName: 'Josh'
+  , lastName: 'Murray'
+  , email: 'joshMurray@yahoo.com'
+  , gpa: 1.5
+  , campusId: 1}
+]
+
+const campuses = [
+  {id: 1, name: 'Math College'
+, imageUrl: 'https://rb.gy/7d30mm'
+, address: '123 cool st'
+, description: 'College for math majors'},
+  {id: 2, name: 'History College'
+, imageUrl: 'https://rb.gy/7d30mm'
+, address: '125 coolest st'
+, description: 'College for history majors'},
+  {id: 3, name: 'English College'
+, imageUrl: 'https://rb.gy/7d30mm'
+, address: '133 cooler st'
+, description: 'College for english majors'},
+  {id: 4, name: 'Science College'
+, imageUrl: 'https://rb.gy/7d30mm'
+, address: '223 superCool st'
+, description: 'College for science majors'},
+  {id: 5, name: 'Art College'
+, imageUrl: 'https://rb.gy/7d30mm'
+, address: '1233 theCool st'
+, description: 'College for art majors'},
+  {id: 6, name: 'Music College'
+, imageUrl: 'https://rb.gy/7d30mm'
+, address: '2223 cooliest st'
+, description: 'College for music majors'}
+];
 
 module.exports = app;

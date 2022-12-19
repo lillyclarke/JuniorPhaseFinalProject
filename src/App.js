@@ -1,4 +1,4 @@
-// import "./components/styles.css";
+// import css from "./styles.css";
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Campuses from './db/Campuses';
