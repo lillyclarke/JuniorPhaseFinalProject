@@ -17,17 +17,17 @@ function Campuses() {
 
   const getCampuses = async () => {
     const { data } = await axios.get('/api/campuses');
-    dispatch(setCampuses(data); //this takes the action.payload from campusSlice.js and it stores it in the campuses
+    dispatch(setCampuses(data) //this takes the action.payload from campusSlice.js and it stores it in the campuses
     )};
 
   const getCampusesByNumberOfStudents = async () => { //this is a function that gets all campuses with enrolled students
     const { data } = await axios.get('/api/campuses/numberOfStudents')
-    dispatch(setCampuses(data);
+    dispatch(setCampuses(data)
     )};
 
   const getEmptyCampuses = async () => { //this is a function that gets all campuses with no students
     const { data } = await axios.get('/api/campuses/empty')
-    dispatch(setCampuses(data);
+    dispatch(setCampuses(data)
     )};
 
   //hook to import it, sends a request to the backend to show it
